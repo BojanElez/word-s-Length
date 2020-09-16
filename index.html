@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math addition</title>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+    body {
+        background: #73accf;
+        font-family: "Roboto", sans-serif;
+    }
+
+    #canvas {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #d1d14b;
+        width: 800px;
+        height: 300px;
+        margin: 50px auto;
+        border-radius: 7px;
+        border: 1px solid #c5c559;
+        box-shadow: 0 2px 2px #bec977;
+    }
+
+    #primary-number,
+    #secondary-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        font-weight: bold;
+        width: 125px;
+        height: 125px;
+        box-sizing: border-box;
+    }
+
+    #primary-number {
+        border: solid 4px #59a859;
+    }
+
+    #secondary-number {
+        border: solid 4px #5050a8;
+    }
+
+    #add,
+    #equal {
+        font-weight: bold;
+        font-size: 40px;
+        padding: 5px;
+    }
+
+    input {
+        border: solid 2px #21dada;
+        width: 160px;
+        height: 45px;
+        border-radius: 4px;
+        padding-left: 25px;
+    }
+
+    button {
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+        margin: 5px;
+        background: #e64f4f;
+        color: white;
+        border: 1px solid #cac3c3;
+        font-size: 16px;
+        border-radius: 4px;
+        text-transform: uppercase;
+    }
+
+    #error {
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="canvas">
+        <div id="primary-number"></div>
+        <div id="add">+</div>
+        <div id="secondary-number"></div>
+        <div id="equal">=</div>
+        <div>
+            <input type="number" id="guess">
+        </div>
+        <div>
+            <button id="btn1">check</button>
+        </div>
+        <div>
+            <button id="btn2">reload</button>
+        </div>
+        <p id="error">Please enter value</p>
+    </div>
+    <script>
+        const primary = document.getElementById('primary-number');
+        const secondary = document.getElementById('secondary-number');
+        const check = document.getElementById('btn1');
+        const reload = document.getElementById('btn2');
+        const guees = document.getElementById("guess")
+        const error = document.getElementById('error')
+
+        let num1 = Math.floor(Math.random() * 100) + 1;
+        let num2 = Math.floor(Math.random() * 100) + 1;
+
+        primary.innerHTML = num1;
+        secondary.innerHTML = num2;
+
+        check.addEventListener("click", function () {
+            let sum = guees.value;
+            let num1 = parseInt(primary.innerHTML);
+            let num2 = parseInt(secondary.innerHTML);
+            if (guees.value === '') {
+                error.style.display = 'block';
+            } else {
+                error.display = 'none';
+            }
+
+            if ((num1 + num2) === parseInt(sum)) {
+                alert('Correct')
+            } else {
+                alert('wrong')
+            }
+        });
+
+        reload.addEventListener("click", function () {
+            location.reload();
+        });
+
+    </script>
+</body>
+
+</html>
